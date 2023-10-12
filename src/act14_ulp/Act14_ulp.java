@@ -75,6 +75,8 @@ public class Act14_ulp {
             if (filasInscripcion >0) {
                 JOptionPane.showMessageDialog(null, "Inscripcion agregada");
 */
+  
+  /*
   //6.Listar los datos de los alumnos con calificaciones superiores a 8.
            String sqlCalificacion = "SELECT a.idAlumno, a.nombre, a.apellido, a.dni, a.fechaNacimiento,m.nombre, i.nota \n"
                    + "FROM alumno a, inscripción i, materia m\n"
@@ -100,13 +102,30 @@ public class Act14_ulp {
                 System.out.println("materia: " + materia);
                 System.out.println("nota "+ nota);
                 System.out.println("___________ \n");
+
             }
-            
-            } catch (ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, "Error al cargar driver" + ex.getMessage() );
-            
-        } catch (SQLException ex) {
-          
+*/
+  
+  //7. Desinscribir un alumno de una de la materias.
+           String sqlDesinscripcion = "DELETE FROM inscripción "
+                   + "WHERE idAlumno = 7 AND idMateria= 1 ";
+           PreparedStatement psDesinscripcion = conexion.prepareStatement(sqlDesinscripcion);
+           int deleteInscripcion = psDesinscripcion.executeUpdate();
+
+           if (deleteInscripcion > 0) {
+               JOptionPane.showMessageDialog(null, "Inscripción eliminada ");
+           }
+
+           
+           
+           
+           
+           
+       } catch (ClassNotFoundException ex) {
+           JOptionPane.showMessageDialog(null, "Error al cargar driver" + ex.getMessage());
+
+       } catch (SQLException ex) {
+
             //imprime cola de errores ex.printStackTrace
            
              int error= ex.getErrorCode() ;
